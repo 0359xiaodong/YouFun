@@ -1,22 +1,37 @@
 <resources>
 
-    <dimen name="bottom_tab_height">59.0dp</dimen>
-    <dimen name="bottom_tab_text_size">11.0sp</dimen>
-
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="activity_horizontal_second_margin">12dp</dimen>
-    <dimen name="activity_vertical_second_margin">12dp</dimen>
-    <dimen name="activity_horizontal_third_margin">8dp</dimen>
-    <dimen name="activity_vertical_third_margin">8dp</dimen>
-    <!-- Default view margins, per the Android Design guidelines. -->
-    <dimen name="view_horizontal_margin">10dp</dimen>
-    <dimen name="view_vertical_margin">3dp</dimen>
+    <dimen name="view_horizontal_margin">16dp</dimen>
+    <dimen name="view_vertical_margin">16dp</dimen>
+    <dimen name="view_horizontal_second_margin">12dp</dimen>
+    <dimen name="view_vertical_second_margin">12dp</dimen>
+    <dimen name="view_horizontal_third_margin">8dp</dimen>
+    <dimen name="view_vertical_third_margin">8dp</dimen>
+    <dimen name="view_horizontal_forth_margin">5dp</dimen>
+    <dimen name="view_vertical_forth_margin">5dp</dimen>
+
+    <dimen name="text_drawable_padding">5.0dp</dimen>
+    <dimen name="text_drawable_second_padding">2.5dp</dimen>
 
     <!-- Topic -->
+    <dimen name="topic_user_head_width">50dip</dimen>
+    <dimen name="topic_user_head_height">50dip</dimen>
+    <dimen name="topic_user_sex_width">11dip</dimen>
+    <dimen name="topic_user_sex_height">11dip</dimen>
+
     <dimen name="topic_small_text_size">10sp</dimen>
     <dimen name="topic_middle_text_size">12sp</dimen>
     <dimen name="topic_large_text_size">14sp</dimen>
 
+    <dimen name="navdrawer_chosen_account_height">140dp</dimen>
+    <dimen name="navdrawer_width">260dp</dimen>
+    <dimen name="navdrawer_profile_image_size">40dp</dimen>
+
+    <dimen name="keyline_1">16dp</dimen>
+    <dimen name="keyline_1_minus_8dp">8dp</dimen>
+    <dimen name="keyline_2">72dp</dimen>
+    <dimen name="keyline_2_minus_16dp">56dp</dimen>
+    <dimen name="keyline_2_session_detail">@dimen/keyline_2</dimen>
+
+    <dimen name="headerbar_elevation">4dp</dimen>
 </resources>

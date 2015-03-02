@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ly_topic_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_bg_item_topic"
+    android:paddingBottom="@dimen/view_vertical_second_margin"
+    android:paddingLeft="@dimen/view_horizontal_second_margin"
+    android:paddingRight="@dimen/view_horizontal_second_margin"
+    android:paddingTop="@dimen/view_vertical_second_margin">
+
+    <ImageView
+        android:id="@+id/image_topic_user_head"
+        android:layout_width="@dimen/topic_user_head_width"
+        android:layout_height="@dimen/topic_user_head_height"
+        tools:src="@drawable/test_default_head" />
+
+    <RelativeLayout
+        android:id="@+id/ly_topic_user_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/view_horizontal_second_margin"
+        android:layout_marginTop="@dimen/view_horizontal_forth_margin"
+        android:layout_toRightOf="@id/image_topic_user_head">
+
+        <TextView
+            android:id="@+id/text_topic_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:singleLine="true"
+            android:textColor="@color/color_topic_user_name"
+            android:textSize="@dimen/topic_middle_text_size"
+            android:textStyle="bold"
+            tools:text="alex" />
+
+        <ImageView
+            android:id="@+id/image_topic_user_sex"
+            android:layout_width="@dimen/topic_user_sex_width"
+            android:layout_height="@dimen/topic_user_sex_height"
+            android:layout_alignBottom="@id/text_topic_user_name"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/view_horizontal_forth_margin"
+            android:layout_toRightOf="@id/text_topic_user_name"
+            tools:src="@drawable/icon_female" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/text_topic_publish_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/ly_topic_user_info"
+        android:layout_below="@id/ly_topic_user_info"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@id/image_topic_user_head"
+        android:singleLine="true"
+        android:textColor="@color/color_topic_publish_time"
+        android:textSize="@dimen/topic_small_text_size"
+        tools:text="刚刚" />
+
+    <TextView
+        android:id="@+id/text_topic_pay_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/view_horizontal_forth_margin"
+        android:paddingBottom="@dimen/view_vertical_forth_margin"
+        android:paddingLeft="@dimen/view_horizontal_third_margin"
+        android:paddingRight="@dimen/view_horizontal_third_margin"
+        android:paddingTop="@dimen/view_horizontal_forth_margin"
+        android:singleLine="true"
+        android:textColor="@color/color_topic_label"
+        android:textSize="@dimen/topic_middle_text_size"
+        android:textStyle="bold"
+        tools:background="@drawable/selector_bg_item_topic_label_green"
+        tools:text="我请客" />
+
+    <TextView
+        android:id="@+id/text_topic_summary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_topic_user_head"
+        android:layout_marginTop="@dimen/view_vertical_second_margin"
+        android:singleLine="true"
+        android:textColor="@color/color_topic_summary"
+        android:textSize="@dimen/topic_large_text_size"
+        tools:text=" &apos;Have Fun ! Have Fun ! Have Fun ! Have Fun ! Have Fun ! Have Fun ! &apos; " />
+
+    <View
+        android:id="@+id/item_line"
+        style="@style/LineDefaultStyle"
+        android:layout_below="@id/text_topic_summary"
+        android:layout_marginTop="@dimen/view_vertical_second_margin" />
+
+    <ImageView
+        android:id="@+id/image_topic_meal_location"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:layout_below="@id/item_line"
+        android:layout_marginTop="@dimen/view_vertical_second_margin"
+        tools:src="@drawable/test_default_place" />
+
+    <TextView
+        android:id="@+id/text_topic_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_line"
+        android:layout_marginLeft="@dimen/view_horizontal_second_margin"
+        android:layout_marginTop="@dimen/view_vertical_margin"
+        android:layout_toRightOf="@id/image_topic_meal_location"
+        android:drawableLeft="@drawable/icon_location"
+        android:drawablePadding="@dimen/text_drawable_padding"
+        android:singleLine="true"
+        android:textColor="@color/color_topic_location"
+        android:textSize="@dimen/topic_middle_text_size"
+        tools:text="张槎银天阁小酒楼" />
+
+    <TextView
+        android:id="@+id/text_topic_meal_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/text_topic_location"
+        android:layout_below="@id/text_topic_location"
+        android:layout_marginTop="@dimen/view_vertical_forth_margin"
+        android:layout_toRightOf="@id/image_topic_meal_location"
+        android:singleLine="true"
+        android:textColor="@color/color_topic_location"
+        android:textSize="@dimen/topic_small_text_size"
+        tools:text="吃大餐 聚餐" />
+
+    <TextView
+        android:id="@+id/text_topic_location_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/item_line"
+        android:layout_marginLeft="@dimen/view_horizontal_third_margin"
+        android:layout_marginTop="@dimen/view_vertical_margin"
+        android:drawableLeft="@drawable/icon_gps"
+        android:drawablePadding="@dimen/text_drawable_padding"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:textColor="@color/color_topic_location_distance"
+        android:textSize="@dimen/topic_middle_text_size"
+        tools:text="3.7Km" />
+
+    <TextView
+        android:id="@+id/text_topic_vail_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_topic_meal_location"
+        android:layout_marginTop="@dimen/view_vertical_third_margin"
+        android:drawableLeft="@drawable/icon_time"
+        android:drawablePadding="@dimen/text_drawable_padding"
+        android:singleLine="true"
+        android:textColor="@color/color_topic_location_distance"
+        android:textSize="@dimen/topic_small_text_size"
+        tools:text="2014-12-30" />
+
+    <TextView
+        android:id="@+id/text_topic_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/image_topic_meal_location"
+        android:layout_marginTop="@dimen/view_vertical_third_margin"
+        android:drawableLeft="@drawable/icon_comment"
+        android:drawablePadding="@dimen/text_drawable_padding"
+        android:singleLine="true"
+        android:textColor="@color/color_topic_location_distance"
+        android:textSize="@dimen/topic_small_text_size"
+        tools:text="评论" />
+
+    <TextView
+        android:id="@+id/text_topic_join"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_topic_meal_location"
+        android:layout_marginRight="@dimen/view_horizontal_margin"
+        android:layout_marginTop="@dimen/view_vertical_third_margin"
+        android:layout_toLeftOf="@id/text_topic_comment"
+        android:drawableLeft="@drawable/icon_join"
+        android:drawablePadding="@dimen/text_drawable_padding"
+        android:singleLine="true"
+        android:textColor="@color/color_topic_location_distance"
+        android:textSize="@dimen/topic_small_text_size"
+        tools:text="报名" />
+
+</RelativeLayout>
