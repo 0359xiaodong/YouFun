@@ -5,11 +5,20 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.deakee.youfun.R;
+import com.deakee.youfun.mvp.presenter.TopicPresenter;
+import com.deakee.youfun.mvp.view.INavView;
+import com.deakee.youfun.mvp.view.ITopicView;
 import com.deakee.youfun.ui.BaseActivity;
 
-public class MainTopicActivity extends BaseActivity {
+import java.util.List;
+
+public class MainTopicActivity extends BaseActivity implements INavView, ITopicView{
+
+    private ListView mTopicListView; // TopicList控件
+    private TopicPresenter mTopicPresenter; // TopicPresenter
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +28,17 @@ public class MainTopicActivity extends BaseActivity {
         Toolbar toolbar = getActionBarToolbar();
         toolbar.setTitle(null);
 
+        mTopicListView = (ListView) findViewById(R.id.topic_list);
+
+        mTopicPresenter = new TopicPresenter(MainTopicActivity.this); //
+
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mTopicPresenter.load(); // 加载数据
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -29,18 +47,4 @@ public class MainTopicActivity extends BaseActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

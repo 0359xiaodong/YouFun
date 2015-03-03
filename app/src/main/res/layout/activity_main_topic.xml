@@ -21,14 +21,18 @@
             android:clickable="true"
             android:orientation="vertical">
 
-            <include layout="@layout/toolbar_actionbar"
+            <include
+                layout="@layout/toolbar_actionbar"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"/>
 
-            <View
+            <ListView
+                android:id="@+id/topic_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#fff"/>
+                android:paddingLeft="@dimen/keyline_1"
+                android:paddingRight="@dimen/keyline_1"
+                android:background="#FFF" />
 
         </LinearLayout>
     </LinearLayout>

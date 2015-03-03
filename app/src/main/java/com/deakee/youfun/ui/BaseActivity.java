@@ -58,7 +58,6 @@ public abstract class BaseActivity extends ActionBarActivity{
             mActionBarToolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    LogUtils.LOGI(TAG, "mActionBarToolbar on click");
                     mDrawerLayout.openDrawer(Gravity.START);
                 }
             });

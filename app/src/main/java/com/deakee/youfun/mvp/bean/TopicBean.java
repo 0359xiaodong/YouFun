@@ -28,7 +28,117 @@ public class TopicBean extends BaseBean{
     private String relayNum;            // 回复数目
 
     // 隐藏信息
-    private String id; // id
     private int orderNum; // 序号
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUserheadUrl() {
+        return userheadUrl;
+    }
+
+    public void setUserheadUrl(String userheadUrl) {
+        this.userheadUrl = userheadUrl;
+    }
+
+    public String getPublishTime() {
+        return publishTime;
+    }
+
+    public void setPublishTime(String publishTime) {
+        this.publishTime = publishTime;
+    }
+
+    public int getPayType() {
+        return payType;
+    }
+
+    public void setPayType(int payType) {
+        this.payType = payType;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getLocationImageUrl() {
+        return locationImageUrl;
+    }
+
+    public void setLocationImageUrl(String locationImageUrl) {
+        this.locationImageUrl = locationImageUrl;
+    }
+
+    public String getLocationDistance() {
+        return locationDistance;
+    }
+
+    public void setLocationDistance(String locationDistance) {
+        this.locationDistance = locationDistance;
+    }
+
+    public String[] getMealTags() {
+        return mealTags;
+    }
+
+    public void setMealTags(String[] mealTags) {
+        this.mealTags = mealTags;
+    }
+
+    public String getVailTime() {
+        return vailTime;
+    }
+
+    public void setVailTime(String vailTime) {
+        this.vailTime = vailTime;
+    }
+
+    public String getJoinNum() {
+        return joinNum;
+    }
+
+    public void setJoinNum(String joinNum) {
+        this.joinNum = joinNum;
+    }
+
+    public String getRelayNum() {
+        return relayNum;
+    }
+
+    public void setRelayNum(String relayNum) {
+        this.relayNum = relayNum;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getOrderNum() {
+        return orderNum;
+    }
+
+    public void setOrderNum(int orderNum) {
+        this.orderNum = orderNum;
+    }
 }
