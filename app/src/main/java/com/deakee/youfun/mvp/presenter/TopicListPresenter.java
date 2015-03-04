@@ -17,10 +17,16 @@ public class TopicListPresenter {
     public TopicListPresenter(ITopicListView mITopicListView) {
         this.mITopicListView = mITopicListView;
         mITopicListModel = new TopicListModel();
+
+        mITopicListView.initPageListAdapter(((TopicListModel)mITopicListModel).getListPageInfo());
     }
 
     public void load() {
         LogUtils.LOGI(TAG, "load");
+
+        mITopicListModel.load();
+
+        mITopicListView.updateUI();
     }
 
     public void loadMore(int page) {

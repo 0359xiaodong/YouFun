@@ -9,6 +9,7 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 
 import com.deakee.youfun.R;
+import com.deakee.youfun.adapter.base.ListPageInfo;
 import com.deakee.youfun.adapter.base.PagedListViewDataAdapter;
 import com.deakee.youfun.mvp.bean.TopicBean;
 import com.deakee.youfun.mvp.presenter.TopicListPresenter;
@@ -16,8 +17,10 @@ import com.deakee.youfun.mvp.view.INavView;
 import com.deakee.youfun.mvp.view.ITopicListView;
 import com.deakee.youfun.ui.BaseActivity;
 import com.deakee.youfun.util.LocalDisplay;
+import com.deakee.youfun.util.LogUtils;
 
 public class MainTopicActivity extends BaseActivity implements INavView, ITopicListView {
+    private final String TAG = "MainTopicActivity";
 
     private ListView mTopicListView; //
     private PagedListViewDataAdapter<TopicBean> mAdapter;
@@ -37,9 +40,11 @@ public class MainTopicActivity extends BaseActivity implements INavView, ITopicL
         headerMarginView.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LocalDisplay.dp2px(20)));
         mTopicListView.addHeaderView(headerMarginView);
 
+        mAdapter = new PagedListViewDataAdapter<TopicBean>();
+
         mTopicListPresenter = new TopicListPresenter(MainTopicActivity.this); //
 
-        mAdapter = new PagedListViewDataAdapter<TopicBean>();
+        mTopicListView.setAdapter(mAdapter);
     }
 
     @Override
@@ -56,8 +61,12 @@ public class MainTopicActivity extends BaseActivity implements INavView, ITopicL
     }
 
     @Override
-    public void init() {
-
+    public void initPageListAdapter(ListPageInfo listPageInfo) {
+        if(listPageInfo != null) {
+            mAdapter.setListPageInfo(listPageInfo);
+        } else {
+            LogUtils.LOGE(TAG, "listPageInfo is null !");
+        }
     }
 
     @Override
