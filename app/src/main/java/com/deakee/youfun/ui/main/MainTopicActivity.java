@@ -1,24 +1,27 @@
 package com.deakee.youfun.ui.main;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ListView;
 
 import com.deakee.youfun.R;
-import com.deakee.youfun.mvp.presenter.TopicPresenter;
+import com.deakee.youfun.adapter.base.PagedListViewDataAdapter;
+import com.deakee.youfun.mvp.bean.TopicBean;
+import com.deakee.youfun.mvp.presenter.TopicListPresenter;
 import com.deakee.youfun.mvp.view.INavView;
-import com.deakee.youfun.mvp.view.ITopicView;
+import com.deakee.youfun.mvp.view.ITopicListView;
 import com.deakee.youfun.ui.BaseActivity;
+import com.deakee.youfun.util.LocalDisplay;
 
-import java.util.List;
+public class MainTopicActivity extends BaseActivity implements INavView, ITopicListView {
 
-public class MainTopicActivity extends BaseActivity implements INavView, ITopicView{
-
-    private ListView mTopicListView; // TopicList控件
-    private TopicPresenter mTopicPresenter; // TopicPresenter
+    private ListView mTopicListView; //
+    private PagedListViewDataAdapter<TopicBean> mAdapter;
+    private TopicListPresenter mTopicListPresenter; // TopicPresenter
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,18 +29,23 @@ public class MainTopicActivity extends BaseActivity implements INavView, ITopicV
         setContentView(R.layout.activity_main_topic);
 
         Toolbar toolbar = getActionBarToolbar();
-        toolbar.setTitle(null);
+        toolbar.setTitle("");
 
         mTopicListView = (ListView) findViewById(R.id.topic_list);
+        // header place holder
+        View headerMarginView = new View(MainTopicActivity.this);
+        headerMarginView.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LocalDisplay.dp2px(20)));
+        mTopicListView.addHeaderView(headerMarginView);
 
-        mTopicPresenter = new TopicPresenter(MainTopicActivity.this); //
+        mTopicListPresenter = new TopicListPresenter(MainTopicActivity.this); //
 
+        mAdapter = new PagedListViewDataAdapter<TopicBean>();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        mTopicPresenter.load(); // 加载数据
+        mTopicListPresenter.load(); // 加载数据
     }
 
     @Override
@@ -47,4 +55,13 @@ public class MainTopicActivity extends BaseActivity implements INavView, ITopicV
         return true;
     }
 
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public void updateUI() {
+        mAdapter.notifyDataSetChanged();
+    }
 }
