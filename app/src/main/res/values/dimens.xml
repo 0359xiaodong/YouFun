@@ -23,6 +23,8 @@
     <dimen name="topic_middle_text_size">12sp</dimen>
     <dimen name="topic_large_text_size">14sp</dimen>
 
+    <dimen name="topic_bg_radius">4dp</dimen>
+
     <dimen name="navdrawer_chosen_account_height">140dp</dimen>
     <dimen name="navdrawer_width">260dp</dimen>
     <dimen name="navdrawer_profile_image_size">40dp</dimen>
@@ -34,4 +36,9 @@
     <dimen name="keyline_2_session_detail">@dimen/keyline_2</dimen>
 
     <dimen name="headerbar_elevation">4dp</dimen>
+
+
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="start_z">2dp</dimen>
+    <dimen name="end_z">5dp</dimen>
 </resources>

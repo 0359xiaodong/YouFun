@@ -1,0 +1,79 @@
+{
+    "data": {
+        "time": "2014-12-19 15:32:03 CST",
+        "list": [
+            {
+                "username": "deekea",
+                "userheadUrl": "",
+                "publishTime": "2015-03-07",
+                "payType": "1",
+                "summary": "",
+                "location": "xx_hotel",
+                "locationImageUrl": "",
+                "locationDistance": "",
+                "mealTags": "",
+                "vailTime": "",
+                "joinNum": "12",
+                "commentNum": "2"
+            },
+            {
+                "username": "deekea",
+                "userheadUrl": "",
+                "publishTime": "2015-03-07",
+                "payType": "1",
+                "summary": "",
+                "location": "xx_hotel",
+                "locationImageUrl": "",
+                "locationDistance": "",
+                "mealTags": "",
+                "vailTime": "",
+                "joinNum": "12",
+                "commentNum": "2"
+            },
+            {
+                "username": "deekea",
+                "userheadUrl": "",
+                "publishTime": "2015-03-07",
+                "payType": "1",
+                "summary": "",
+                "location": "xx_hotel",
+                "locationImageUrl": "",
+                "locationDistance": "",
+                "mealTags": "",
+                "vailTime": "",
+                "joinNum": "12",
+                "commentNum": "2"
+            },
+            {
+                "username": "deekea",
+                "userheadUrl": "",
+                "publishTime": "2015-03-07",
+                "payType": "1",
+                "summary": "",
+                "location": "xx_hotel",
+                "locationImageUrl": "",
+                "locationDistance": "",
+                "mealTags": "",
+                "vailTime": "",
+                "joinNum": "12",
+                "commentNum": "2"
+            },
+            {
+                "username": "deekea",
+                "userheadUrl": "",
+                "publishTime": "2015-03-07",
+                "payType": "1",
+                "summary": "",
+                "location": "xx_hotel",
+                "locationImageUrl": "",
+                "locationDistance": "",
+                "mealTags": "",
+                "vailTime": "",
+                "joinNum": "12",
+                "commentNum": "2"
+            }
+        ],
+        "has_more": true
+    },
+    "ok": true
+}

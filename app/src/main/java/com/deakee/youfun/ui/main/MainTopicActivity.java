@@ -1,56 +1,191 @@
 package com.deakee.youfun.ui.main;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.deakee.youfun.R;
-import com.deakee.youfun.adapter.base.ListPageInfo;
-import com.deakee.youfun.adapter.base.PagedListViewDataAdapter;
-import com.deakee.youfun.mvp.bean.TopicBean;
-import com.deakee.youfun.mvp.presenter.TopicListPresenter;
-import com.deakee.youfun.mvp.view.INavView;
-import com.deakee.youfun.mvp.view.ITopicListView;
-import com.deakee.youfun.ui.BaseActivity;
-import com.deakee.youfun.util.LocalDisplay;
-import com.deakee.youfun.util.LogUtils;
+import com.deakee.youfun.base.YouFunTitleBaseActivity;
+import com.deakee.youfun.data.TopicListItem;
+import com.deakee.youfun.event.DemoSimpleEventHandler;
+import com.deakee.youfun.event.EventCenter;
+import com.deakee.youfun.event.TopicListDataEvent;
+import com.deakee.youfun.model.TopicListDataModel;
+import com.deakee.youfun.ui.PtrUIRefreshCompleteHandler;
+import com.deakee.youfun.ui.viewholders.TopicListItemViewHolder;
 
-public class MainTopicActivity extends BaseActivity implements INavView, ITopicListView {
-    private final String TAG = "MainTopicActivity";
+import org.json.JSONObject;
 
-    private ListView mTopicListView; //
-    private PagedListViewDataAdapter<TopicBean> mAdapter;
-    private TopicListPresenter mTopicListPresenter; // TopicPresenter
+import java.io.InputStream;
+
+import in.srain.cube.image.ImageLoader;
+import in.srain.cube.image.ImageLoaderFactory;
+import in.srain.cube.image.impl.DefaultImageLoadHandler;
+import in.srain.cube.util.CLog;
+import in.srain.cube.util.LocalDisplay;
+import in.srain.cube.views.list.PagedListViewDataAdapter;
+import in.srain.cube.views.ptr.PtrDefaultHandler;
+import in.srain.cube.views.ptr.PtrFrameLayout;
+import in.srain.cube.views.ptr.PtrHandler;
+import in.srain.cube.views.ptr.header.MaterialHeader;
+
+public class MainTopicActivity extends YouFunTitleBaseActivity {
+    private String TAG = "MainTopicActivity";
+
+    private PagedListViewDataAdapter<TopicListItem> mAdapter;
+    private TopicListDataModel mDataModel;
+    private ImageLoader mImageLoader;
+    private PtrFrameLayout mPtrFrameLayout;
+    private ListView mListView;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_topic);
 
-        Toolbar toolbar = getActionBarToolbar();
-        toolbar.setTitle("");
+        initImageLoader();
+        initModelAndAdapter();
 
-        mTopicListView = (ListView) findViewById(R.id.topic_list);
-        // header place holder
-        View headerMarginView = new View(MainTopicActivity.this);
-        headerMarginView.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LocalDisplay.dp2px(20)));
-        mTopicListView.addHeaderView(headerMarginView);
+        initView();
+        initEventBus();
 
-        mAdapter = new PagedListViewDataAdapter<TopicBean>();
-
-        mTopicListPresenter = new TopicListPresenter(MainTopicActivity.this); //
-
-        mTopicListView.setAdapter(mAdapter);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        mTopicListPresenter.load(); // 加载数据
+
+        mPtrFrameLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPtrFrameLayout.autoRefresh(true);
+            }
+        }, 150);
+    }
+
+    private void initImageLoader() {
+        mImageLoader = ImageLoaderFactory.create(getContext());
+        ((DefaultImageLoadHandler) mImageLoader.getImageLoadHandler()).setImageRounded(true, 25);
+    }
+
+    private void initModelAndAdapter() {
+        mDataModel = new TopicListDataModel(5);
+
+        mAdapter = new PagedListViewDataAdapter<TopicListItem>();
+        mAdapter.setViewHolderClass(getContext(), TopicListItemViewHolder.class, mImageLoader);
+        mAdapter.setListPageInfo(mDataModel.getListPageInfo());
+    }
+
+    private void initView() {
+        initToolBar();
+        initDrawerLayout();
+        initPtrFrameLayout();
+        initListView();
+    }
+
+    // init the toolbar
+    private void initToolBar() {
+        Toolbar toolbar = getActionBarToolbar();
+        toolbar.setTitle("YouFun");
+        setSupportActionBar(toolbar);
+
+//        toolbar.setNavigationIcon(R.drawable.ic_drawer);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CLog.d("TAG", "try open drawer");
+            }
+        });
+    }
+
+    private void initDrawerLayout() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, getActionBarToolbar(), R.string.drawer_open,
+                R.string.drawer_close);
+        mDrawerToggle.syncState();
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+    }
+
+    // init the pull down
+    private void initPtrFrameLayout() {
+        mPtrFrameLayout = (PtrFrameLayout) findViewById(R.id.load_more_list_view_ptr_frame);
+        MaterialHeader ptrHeader = new MaterialHeader(getContext());
+        PtrFrameLayout.LayoutParams lp = new PtrFrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        ptrHeader.setLayoutParams(lp);
+        ptrHeader.setPadding(0, LocalDisplay.dp2px(20), 0, LocalDisplay.dp2px(2));
+        ptrHeader.setPtrFrameLayout(mPtrFrameLayout);
+
+        mPtrFrameLayout.setLoadingMinTime(1000);
+        mPtrFrameLayout.setHeaderView(ptrHeader);
+        mPtrFrameLayout.addPtrUIHandler(ptrHeader);
+        mPtrFrameLayout.setPtrHandler(new PtrHandler() {
+            @Override
+            public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+                // here check list view, not content.
+                return PtrDefaultHandler.checkContentCanBePulledDown(frame, mListView, header);
+            }
+
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+                CLog.d(TAG, "onRefreshBegin");
+                mDataModel.queryFirstPage();
+            }
+        });
+
+        mPtrFrameLayout.addPtrUIHandler(new PtrUIRefreshCompleteHandler() {
+            @Override
+            public void onUIRefreshComplete(PtrFrameLayout frame) {
+                CLog.d(TAG, "onUIRefreshComplete");
+
+//                loadMoreListViewContainer.loadMoreFinish(mDataModel.getListPageInfo().isEmpty(), mDataModel.getListPageInfo().hasMore());
+                mAdapter.notifyDataSetChanged();
+                mDataModel.getListPageInfo().unlock(); // unlock the pull down action
+            }
+        });
+    }
+
+    // init ListView
+    private void initListView() {
+        mListView = (ListView) findViewById(R.id.topic_list_view);
+
+        // header place holder
+        View headerMarginView = new View(getContext());
+        headerMarginView.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LocalDisplay.dp2px(getResources().getDimension(R.dimen.keyline_1_minus_8dp))));
+        mListView.addHeaderView(headerMarginView);
+
+        mListView.setAdapter(mAdapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+    }
+
+
+    private void initEventBus() {
+        EventCenter.bindContainerAndHandler(this, new DemoSimpleEventHandler() {
+
+            public void onEvent(TopicListDataEvent event) {
+                CLog.d(TAG, "onEvent");
+                mPtrFrameLayout.refreshComplete();
+            }
+
+        }).tryToRegisterIfNot();
     }
 
     @Override
@@ -61,16 +196,22 @@ public class MainTopicActivity extends BaseActivity implements INavView, ITopicL
     }
 
     @Override
-    public void initPageListAdapter(ListPageInfo listPageInfo) {
-        if(listPageInfo != null) {
-            mAdapter.setListPageInfo(listPageInfo);
-        } else {
-            LogUtils.LOGE(TAG, "listPageInfo is null !");
-        }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
-    public void updateUI() {
-        mAdapter.notifyDataSetChanged();
+    protected Context getContext() {
+        return MainTopicActivity.this;
     }
 }

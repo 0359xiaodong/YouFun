@@ -4,38 +4,81 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context=".ui.MainTopicActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:background="#EEE">
 
-        <!-- 标题栏 -->
-        <LinearLayout
-            style="@style/HeaderBar"
-            android:id="@+id/headerbar"
+        <in.srain.cube.views.ptr.PtrClassicFrameLayout
+            android:id="@+id/load_more_list_view_ptr_frame"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <include
-                layout="@layout/toolbar_actionbar"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-
-            <ListView
-                android:id="@+id/topic_list"
+            <in.srain.cube.views.loadmore.LoadMoreListViewContainer
+                android:id="@+id/load_more_list_view_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="@dimen/keyline_1"
-                android:paddingRight="@dimen/keyline_1"
-                android:background="#FFF" />
+                android:background="#EEE">
 
-        </LinearLayout>
-    </LinearLayout>
+                <ListView
+                    android:id="@+id/topic_list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:divider="@null"
+                    android:fadingEdge="none"
+                    android:dividerHeight="@dimen/keyline_1_minus_8dp"
+                    android:drawSelectorOnTop="true"
+                    android:paddingLeft="@dimen/keyline_1"
+                    android:paddingRight="@dimen/keyline_1"
+                    android:scrollbarStyle="outsideOverlay" />
+
+            </in.srain.cube.views.loadmore.LoadMoreListViewContainer>
+        </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:fab="http://schemas.android.com/apk/res-auto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/keyline_1"
+            android:layout_marginBottom="@dimen/keyline_1"
+            fab:fab_addButtonColorNormal="@color/color_topic_action_button"
+            fab:fab_addButtonColorPressed="@color/color_topic_action_button_pressed"
+            fab:fab_labelStyle="@style/menu_labels_style"
+            fab:fab_labelsPosition="left">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_colorNormal="@color/color_topic_action_button"
+                fab:fab_colorPressed="@color/color_topic_action_button_pressed"
+                fab:fab_title="扫一扫吧"
+                android:src="@drawable/ic_scan_qr_code" />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_colorNormal="@color/color_topic_action_button"
+                fab:fab_colorPressed="@color/color_topic_action_button_pressed"
+                fab:fab_title="今日签到"
+                android:src="@drawable/ic_registe" />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_colorNormal="@color/color_topic_action_button"
+                fab:fab_colorPressed="@color/color_topic_action_button_pressed"
+                fab:fab_title="发起活动"
+                android:src="@drawable/ic_write_topic" />
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+    </RelativeLayout>
+
 
     <!-- 侧拉栏 -->
     <include layout="@layout/navdrawer" />
