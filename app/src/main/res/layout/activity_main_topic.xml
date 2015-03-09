@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 fab:fab_colorNormal="@color/color_topic_action_button"
                 fab:fab_colorPressed="@color/color_topic_action_button_pressed"
-                fab:fab_title="扫一扫吧"
+                fab:fab_title="@string/floating_action_button_first_text"
                 android:src="@drawable/ic_scan_qr_code" />
 
             <com.getbase.floatingactionbutton.FloatingActionButton
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 fab:fab_colorNormal="@color/color_topic_action_button"
                 fab:fab_colorPressed="@color/color_topic_action_button_pressed"
-                fab:fab_title="今日签到"
+                fab:fab_title="@string/floating_action_button_second_text"
                 android:src="@drawable/ic_registe" />
 
             <com.getbase.floatingactionbutton.FloatingActionButton
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 fab:fab_colorNormal="@color/color_topic_action_button"
                 fab:fab_colorPressed="@color/color_topic_action_button_pressed"
-                fab:fab_title="发起活动"
+                fab:fab_title="@string/floating_action_button_third_text"
                 android:src="@drawable/ic_write_topic" />
 
         </com.getbase.floatingactionbutton.FloatingActionsMenu>

@@ -9,7 +9,7 @@
         android:orderInCategory="1"
         android:title="@string/description_search"
         youfun:actionViewClass="android.support.v7.widget.SearchView"
-        youfun:showAsAction="ifRoom" />
+        youfun:showAsAction="ifRoom|collapseActionView" />
 
     <item
         android:id="@+id/action_settings"
@@ -17,4 +17,5 @@
         android:title="@string/description_settings"
         android:orderInCategory="100"
         youfun:showAsAction="always" />
+
 </menu>

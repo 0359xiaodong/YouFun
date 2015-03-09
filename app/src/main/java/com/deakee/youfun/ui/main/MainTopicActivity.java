@@ -2,8 +2,10 @@ package com.deakee.youfun.ui.main;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -98,16 +100,8 @@ public class MainTopicActivity extends YouFunTitleBaseActivity {
     // init the toolbar
     private void initToolBar() {
         Toolbar toolbar = getActionBarToolbar();
-        toolbar.setTitle("YouFun");
+        toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(toolbar);
-
-//        toolbar.setNavigationIcon(R.drawable.ic_drawer);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CLog.d("TAG", "try open drawer");
-            }
-        });
     }
 
     private void initDrawerLayout() {
@@ -192,7 +186,29 @@ public class MainTopicActivity extends YouFunTitleBaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main_topic, menu);
+
+        initSearchView(menu);
+
         return true;
+    }
+
+    private void initSearchView(Menu menu) {
+        //init searchView
+        MenuItem searchItem = menu.findItem(R.id.menu_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // on search onclick
+            }
+        });
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                // on close onclick
+                return false;
+            }
+        });
     }
 
     @Override

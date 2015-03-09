@@ -58,14 +58,14 @@
     <!-- 一般分割线样式 -->
     <style name="LineDefaultStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0.5dip</item>
+        <item name="android:layout_height">1dip</item>
         <item name="android:background">#FFe2e2e2</item>
     </style>
 
 
     <style name="menu_labels_style">
-        <item name="android:background">@drawable/fab_label_background</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/bg_fab_label</item>
+        <item name="android:textColor">@color/body_text_1_inverse</item>
     </style>
 
 

@@ -10,14 +10,6 @@
     <!--  -->
     <color name="cube_mints_app_base_background">#999999</color>
 
-    <!-- Bottom Tab -->
-    <item name="color_bottom_tab_background" type="color">@color/color_transparent_white</item>
-    <item name="color_bottom_tab_text" type="color">@color/color_gray</item>
-    <item name="color_bottom_tab_text_press" type="color">@color/color_red</item>
-
-    <color name="bg_title_bar">#007edf</color>
-    <color name="bg_title_bar_press">#4d90fe</color>
-
 	<!-- topic -->
     <item name="color_topic_user_name" type="color">@color/gray</item>
     <item name="color_topic_publish_time" type="color">@color/light_red</item>
