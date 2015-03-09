@@ -30,31 +30,32 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <FrameLayout
+        <RelativeLayout
             android:id="@+id/chosen_account_view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/navdrawer_chosen_account_height"
-            android:foreground="?android:selectableItemBackground"
-            android:background="#4000" >
+            android:layout_height="@dimen/navdrawer_chosen_account_height" >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="@dimen/navdrawer_profile_image_size"
+                android:layout_height="@dimen/navdrawer_profile_image_size"
+                android:src="@drawable/person_image_empty"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/drawer_username"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/keyline_1"
-                android:paddingRight="@dimen/keyline_1"
-                android:paddingTop="@dimen/keyline_1"
-                android:id="@+id/chosen_account_content_view">
+                android:text="Deekea"
+                android:textSize="26sp"
+                android:layout_below="@id/profile_image"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/keyline_1_minus_8dp" />
 
-                <ImageView
-                    android:id="@+id/profile_image"
-                    android:layout_width="@dimen/navdrawer_profile_image_size"
-                    android:layout_height="@dimen/navdrawer_profile_image_size"
-                    android:src="@drawable/person_image_empty"
-                    android:scaleType="centerCrop"
-                     />
-            </RelativeLayout>
-
-        </FrameLayout>
+        </RelativeLayout>
 
         <FrameLayout
             android:layout_width="match_parent"

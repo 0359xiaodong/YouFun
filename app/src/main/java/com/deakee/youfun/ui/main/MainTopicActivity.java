@@ -12,6 +12,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.LayoutAnimationController;
+import android.view.animation.TranslateAnimation;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -24,6 +29,7 @@ import com.deakee.youfun.event.EventCenter;
 import com.deakee.youfun.event.TopicListDataEvent;
 import com.deakee.youfun.model.TopicListDataModel;
 import com.deakee.youfun.ui.PtrUIRefreshCompleteHandler;
+import com.deakee.youfun.ui.fragment.LoginFragment;
 import com.deakee.youfun.ui.viewholders.TopicListItemViewHolder;
 
 import org.json.JSONObject;
@@ -75,6 +81,9 @@ public class MainTopicActivity extends YouFunTitleBaseActivity {
                 mPtrFrameLayout.autoRefresh(true);
             }
         }, 150);
+
+        LoginFragment editNameDialog = new LoginFragment();
+        editNameDialog.show(getSupportFragmentManager(), "LoginFragment");
     }
 
     private void initImageLoader() {
@@ -168,8 +177,8 @@ public class MainTopicActivity extends YouFunTitleBaseActivity {
 
             }
         });
-    }
 
+    }
 
     private void initEventBus() {
         EventCenter.bindContainerAndHandler(this, new DemoSimpleEventHandler() {

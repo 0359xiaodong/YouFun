@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/login_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_title"
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/keyline_1_minus_8dp"
-        android:textSize="22dp" />
+        android:text="@string/login_title"
+        android:textSize="26dp" />
 
     <View
-        android:id="@+id/login_line"
+        android:id="@+id/login_top_line"
         style="@style/LineDefaultStyle"
         android:layout_below="@id/login_title" />
 
     <RelativeLayout
+        android:id="@+id/login_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/login_title"
         android:paddingBottom="30dp"
         android:paddingLeft="@dimen/keyline_1"
         android:paddingRight="@dimen/keyline_1"
-        android:layout_below="@+id/login_title"
-        android:layout_alignParentStart="true">
+        android:paddingTop="30dp">
 
         <ImageView
             android:id="@+id/login_iamge_username"
@@ -33,8 +35,9 @@
             android:layout_height="30dp"
             android:layout_alignBottom="@+id/login_username"
             android:layout_marginBottom="8dp"
-            android:visibility="gone"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/ic_launcher"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/login_label_username"
             android:layout_width="wrap_content"
@@ -44,60 +47,79 @@
 
         <EditText
             android:id="@+id/login_username"
-            android:text="Username"
-            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_label_username"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/login_iamge_username"
-            android:layout_below="@id/login_label_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:text="Username"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/login_label_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_below="@id/login_username"
+            android:layout_marginTop="10dp"
             android:text="Password" />
+
         <EditText
             android:id="@+id/login_password"
-            android:text="Password"
-            android:textSize="14sp"
-            android:layout_marginLeft="10dp"
-            android:layout_below="@id/login_label_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_label_password"
+            android:layout_marginLeft="10dp"
+            android:text="Password"
+            android:textSize="14sp" />
 
         <RelativeLayout
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/login_password"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_password"
+            android:layout_marginTop="20dp">
 
             <TextView
+                android:id="@+id/login_forget_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:text="Forget password?"
-                android:layout_alignParentLeft="true"
-                android:textSize="12sp"
-                android:id="@+id/login_forget_password" />
+                android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/login_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_button"
+                android:paddingBottom="8dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:paddingTop="8dp"
-                android:paddingBottom="8dp"
                 android:text="Login"
-                android:layout_alignParentRight="true"
                 android:textColor="@color/white"
-                android:background="@drawable/bg_button"
-                android:id="@+id/login_button" />
+                android:elevation="4dp" />
 
         </RelativeLayout>
     </RelativeLayout>
+
+    <View
+        android:id="@+id/login_bottom_line"
+        style="@style/LineDefaultStyle"
+        android:layout_below="@id/login_content" />
+
+    <TextView
+        android:id="@+id/login_create_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_bottom_line"
+        android:background="@drawable/bg_custom_ripple"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/keyline_1"
+        android:paddingTop="@dimen/keyline_1"
+        android:text="@string/login_create_account"
+        android:textSize="14sp" />
 
 
 </RelativeLayout>
