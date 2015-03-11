@@ -20,6 +20,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.deakee.youfun.R;
 import com.deakee.youfun.base.YouFunTitleBaseActivity;
@@ -31,6 +32,9 @@ import com.deakee.youfun.model.TopicListDataModel;
 import com.deakee.youfun.ui.PtrUIRefreshCompleteHandler;
 import com.deakee.youfun.ui.fragment.LoginFragment;
 import com.deakee.youfun.ui.viewholders.TopicListItemViewHolder;
+import com.facebook.rebound.SimpleSpringListener;
+import com.facebook.rebound.Spring;
+import com.facebook.rebound.SpringSystem;
 
 import org.json.JSONObject;
 
@@ -116,10 +120,41 @@ public class MainTopicActivity extends YouFunTitleBaseActivity {
     private void initDrawerLayout() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        // bind drawer and toolbar
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, getActionBarToolbar(), R.string.drawer_open,
-                R.string.drawer_close);
+                R.string.drawer_close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                final RelativeLayout bottomList = (RelativeLayout) findViewById(R.id.navdrawer_bottom_item_list);
+
+                // Create a system to run the physics loop for a set of springs.
+                SpringSystem springSystem = SpringSystem.create();
+
+                // Add a spring to the system.
+                Spring spring = springSystem.createSpring();
+
+                // Add a listener to observe the motion of the spring.
+                spring.addListener(new SimpleSpringListener() {
+
+                    @Override
+                    public void onSpringUpdate(Spring spring) {
+                        // You can observe the updates in the spring
+                        // state by asking its current value in onSpringUpdate.
+                        float value = (float) spring.getCurrentValue();
+                        float scale = 1f - (value * 0.5f);
+                        bottomList.setScaleX(scale);
+                        bottomList.setScaleY(scale);
+                    }
+                });
+
+                // Set the spring in motion; moving from 0 to 1
+                spring.setEndValue(1);
+            }
+        };
         mDrawerToggle.syncState();
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+
     }
 
     // init the pull down

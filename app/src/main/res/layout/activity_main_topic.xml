@@ -28,6 +28,8 @@
                     android:background="@null"
                     android:divider="@null"
                     android:fadingEdge="none"
+                    android:fadingEdgeLength="0dp"
+                    android:overScrollMode="never"
                     android:dividerHeight="@dimen/keyline_1_minus_8dp"
                     android:drawSelectorOnTop="true"
                     android:paddingLeft="@dimen/keyline_1"
