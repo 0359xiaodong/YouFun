@@ -17,7 +17,6 @@ import in.srain.cube.util.CLog;
 
 /**
  * Created by Deekea on 2015/3/6.
- *
  */
 public abstract class YouFunFragmentActivity extends ActionBarActivity {
     private final static String LOG_TAG = "youfun-fragment"; // LogCat TAG

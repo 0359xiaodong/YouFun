@@ -22,7 +22,7 @@ import in.srain.cube.util.LocalDisplay;
 /**
  * Created by Deekea on 2015/2/21.
  */
-public class YouFunApplication extends Application{
+public class YouFunApplication extends Application {
 
     public static YouFunApplication instance;
 

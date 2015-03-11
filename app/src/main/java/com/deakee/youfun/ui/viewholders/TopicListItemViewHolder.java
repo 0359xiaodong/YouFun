@@ -41,7 +41,7 @@ public class TopicListItemViewHolder extends ViewHolderBase<TopicListItem> {
     }
 
     public TopicListItemViewHolder(ImageLoader imageLoader) {
-        if(imageLoader != null) {
+        if (imageLoader != null) {
             mImageloader = imageLoader;
         } else {
             throw new NullPointerException("imageLoader is null");

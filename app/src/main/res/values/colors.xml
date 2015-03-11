@@ -6,11 +6,11 @@
     <color name="color_gray">#ff999999</color>
     <color name="color_red">#ffff705e</color>
     <color name="color_transparent_white">#f4ffffff</color>
-    
+
     <!--  -->
     <color name="cube_mints_app_base_background">#999999</color>
 
-	<!-- topic -->
+    <!-- topic -->
     <item name="color_topic_user_name" type="color">@color/gray</item>
     <item name="color_topic_publish_time" type="color">@color/light_red</item>
     <item name="color_topic_summary" type="color">@color/light_gray</item>

@@ -13,8 +13,6 @@ import in.srain.cube.views.list.ListPageInfo;
 
 /**
  * Created by Deekea on 2015/3/1.
- *
- *
  */
 public class TopicListDataModel extends BaseListModel<TopicListItem> {
     private String TAG = "TopicListDataModel";
@@ -31,7 +29,7 @@ public class TopicListDataModel extends BaseListModel<TopicListItem> {
         event.success = true;
         event.hasMore = true;
         event.topicList = new ArrayList<TopicListItem>();
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             TopicListItem data = new TopicListItem();
             data.setUsername("Deekea");
             data.setUserSexType(i % 2);

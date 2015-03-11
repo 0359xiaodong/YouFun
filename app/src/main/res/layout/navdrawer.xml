@@ -14,46 +14,43 @@
    limitations under the License.
 -->
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navdrawer"
     android:layout_width="@dimen/navdrawer_width"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:id="@+id/navdrawer"
-    android:background="@color/navdrawer_background"
-    android:fitsSystemWindows="true"
-    app:insetForeground="#4000">
+    android:background="@color/navdrawer_background" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/chosen_account_view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/navdrawer_chosen_account_height" >
+            android:layout_height="@dimen/navdrawer_chosen_account_height">
 
             <ImageView
-                android:id="@+id/profile_image"
+                android:id="@+id/navdrawer_userhead_iamge"
                 android:layout_width="@dimen/navdrawer_profile_image_size"
                 android:layout_height="@dimen/navdrawer_profile_image_size"
-                android:src="@drawable/person_image_empty"
                 android:layout_centerInParent="true"
+                android:layout_gravity="center"
                 android:scaleType="centerCrop"
-                android:layout_gravity="center" />
+                android:src="@drawable/person_image_empty" />
 
             <TextView
-                android:id="@+id/drawer_username"
+                android:id="@+id/navdrawer_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Deekea"
-                android:textSize="26sp"
-                android:layout_below="@id/profile_image"
+                android:layout_below="@id/navdrawer_userhead_iamge"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/keyline_1_minus_8dp"
+                android:text="Deekea"
                 android:textColor="@color/white"
-                android:layout_marginTop="@dimen/keyline_1_minus_8dp" />
+                android:textSize="26sp" />
 
         </RelativeLayout>
 
@@ -62,14 +59,67 @@
             android:layout_height="wrap_content">
 
             <!-- Drawer items -->
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/navdrawer_items_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:orientation="vertical" />
+                android:layout_marginBottom="32dp"
+                android:layout_marginTop="32dp">
+
+                <RelativeLayout
+                    android:id="@+id/navdrawer_top_item_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/navdrawer_explorer"
+                        style="@style/NavigationItemStyle"
+                        android:background="@drawable/bg_item_nav"
+                        android:drawableLeft="@drawable/ic_drawer_g"
+                        android:text="Explorer"
+                        android:textColor="@color/theme_primary" />
+
+                    <TextView
+                        android:id="@+id/navdrawer_activity"
+                        style="@style/NavigationItemStyle"
+                        android:layout_below="@id/navdrawer_explorer"
+                        android:drawableLeft="@drawable/ic_activity_w"
+                        android:text="Activity" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/navdrawer_bottom_item_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/navdrawer_top_item_list"
+                    android:layout_marginTop="32dp">
+
+                    <TextView
+                        android:id="@+id/navdrawer_settings"
+                        style="@style/NavigationItemStyle"
+                        android:drawableLeft="@drawable/ic_settings_w"
+                        android:text="Settings" />
+
+                    <TextView
+                        android:id="@+id/navdrawerlogout"
+                        style="@style/NavigationItemStyle"
+                        android:layout_below="@id/navdrawer_settings"
+                        android:drawableLeft="@drawable/ic_logout_w"
+                        android:text="Logout" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
         </FrameLayout>
+
+        <TextView
+            android:id="@+id/navdrawer_theme_mode"
+            style="@style/NavigationItemStyle"
+            android:layout_gravity="bottom"
+            android:drawableLeft="@drawable/ic_night_mode"
+            android:text="Night Mode" />
+
     </LinearLayout>
 
 </ScrollView>

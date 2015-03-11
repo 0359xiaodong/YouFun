@@ -3,6 +3,7 @@
     <!-- Disable RTL support on older devices -->
     <!-- Prevents crash on certain devices to namespace conflict -->
     <style name="FrameworkRoot.Theme" parent="Theme.AppCompat.Light" />
+
     <style name="FrameworkRoot.Widget" parent="Theme.AppCompat" />
 
     <!-- Immediate parent theme to specify base values for custom attributes -->
@@ -32,11 +33,6 @@
     <style name="Theme.YouFun" parent="Theme.YouFun.Base" />
 
 
-
-
-
-
-
     <style name="HeaderBar">
         <item name="android:background">?colorPrimary</item>
         <item name="android:elevation">@dimen/headerbar_elevation</item>
@@ -62,11 +58,19 @@
         <item name="android:background">#FFe2e2e2</item>
     </style>
 
-
     <style name="menu_labels_style">
         <item name="android:background">@drawable/bg_fab_label</item>
         <item name="android:textColor">@color/body_text_1_inverse</item>
     </style>
 
+    <style name="NavigationItemStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">32dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:drawablePadding">@dimen/keyline_1</item>
+        <item name="android:textColor">@drawable/selector_color_nav_item</item>
+    </style>
 
 </resources>

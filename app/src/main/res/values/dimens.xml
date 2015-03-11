@@ -24,7 +24,7 @@
     <dimen name="topic_large_text_size">14sp</dimen>
 
     <dimen name="topic_bg_radius">4dp</dimen>
-    
+
     <!-- Button -->
     <dimen name="button_bg_radius">4dp</dimen>
 

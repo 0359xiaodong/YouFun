@@ -91,7 +91,7 @@ public class BezelImageView extends ImageView {
         // Other initialization
         mBlackPaint = new Paint();
         mBlackPaint.setColor(0xff000000);
-        
+
         mMaskedPaint = new Paint();
         mMaskedPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
 

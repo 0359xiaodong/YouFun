@@ -1,29 +1,25 @@
-package com.deakee.youfun.ui.login;
+package com.deakee.youfun.ui.topicdetail;
 
 import android.content.Context;
 import android.os.Bundle;
 
+import com.deakee.youfun.R;
 import com.deakee.youfun.base.YouFunNoExitTipFragmentActivity;
 
 /**
- * Created by Deekea on 2015/3/9.
+ * Created by Deekea on 2015/3/10.
  */
-public class LoginActivity extends YouFunNoExitTipFragmentActivity {
+public class TopicDetailActivity extends YouFunNoExitTipFragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
+        setContentView(R.layout.activity_topic_detail);
     }
 
     @Override
     protected Context getContext() {
-        return LoginActivity.this;
+        return TopicDetailActivity.this;
     }
-
-
 }

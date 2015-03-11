@@ -10,7 +10,6 @@ import in.srain.cube.util.CubeDebug;
 
 /**
  * Created by Deekea on 2015/3/6.
- *
  */
 public abstract class YouFunBaseFragmentActivity extends YouFunFragmentActivity implements IComponentContainer {
 

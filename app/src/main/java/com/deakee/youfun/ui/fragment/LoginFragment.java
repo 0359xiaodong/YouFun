@@ -23,14 +23,15 @@ public class LoginFragment extends DialogFragment {
 
     private View mRootView;
     private Context mContext;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        if(mRootView == null) {
+        if (mRootView == null) {
             mContext = getActivity();
             mRootView = inflater.inflate(R.layout.fragment_login, container, false);
         } else {
-            ((ViewGroup)this.mRootView.getParent()).removeView(this.mRootView);
+            ((ViewGroup) this.mRootView.getParent()).removeView(this.mRootView);
         }
         return mRootView;
     }
@@ -39,7 +40,7 @@ public class LoginFragment extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         int style = DialogFragment.STYLE_NO_TITLE, theme = 0;
-        setStyle(style,theme);
+        setStyle(style, theme);
     }
 
     @Override

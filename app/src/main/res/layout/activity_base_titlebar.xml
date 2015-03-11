@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
-        xmlns:youfun="http://schemas.android.com/apk/res-auto"
+    <android.support.v7.widget.Toolbar xmlns:youfun="http://schemas.android.com/apk/res-auto"
         android:id="@+id/toolbar_actionbar"
         youfun:theme="@style/ActionBarThemeOverlay"
         youfun:popupTheme="@style/ActionBarPopupThemeOverlay"
@@ -14,7 +13,7 @@
         youfun:contentInsetStart="?actionBarInsetStart"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:elevation="4dp"/>
+        android:elevation="4dp" />
 
     <LinearLayout
         android:id="@+id/youfun_content_frame_content"

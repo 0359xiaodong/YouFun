@@ -12,7 +12,7 @@ import com.deakee.youfun.R;
 
 /**
  * Created by Deekea on 2015/3/6.
- *
+ * <p/>
  * use toolbar
  */
 public abstract class YouFunTitleBaseActivity extends YouFunExitTipFragmentActivity {

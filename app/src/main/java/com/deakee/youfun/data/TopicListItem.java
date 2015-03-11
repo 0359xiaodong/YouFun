@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 /**
  * Created by Deekea on 2015/3/1.
- *
+ * <p/>
  * TopicListItem
  */
-public class TopicListItem extends BaseListItem{
+public class TopicListItem extends BaseListItem {
     // user sex type
     public static final int SEX_MALE = 0;
     public static final int SEX_FEMALE = 1;
